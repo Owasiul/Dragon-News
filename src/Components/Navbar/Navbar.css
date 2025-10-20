@@ -1,0 +1,5 @@
+.nav a.active {
+  color: darkblue;
+  text-decoration: underline;
+  font-weight: bold;
+}
