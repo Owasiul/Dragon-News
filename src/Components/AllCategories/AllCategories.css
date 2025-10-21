@@ -1,0 +1,6 @@
+.Allcategory a.active {
+  background-color: #e7e7e7;
+  padding: 2px;
+  color: #706f6f;
+  font-weight: 600;
+}
