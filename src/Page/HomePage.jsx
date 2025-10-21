@@ -1,9 +1,13 @@
 import React from 'react';
 
+
 const HomePage = () => {
     return (
         <div>
-          main content homepage
+          <h2 className='font-bold'>Dragon News Home</h2>
+          <div>
+          
+          </div>
         </div>
     );
 };

@@ -25,11 +25,11 @@ const Home = () => {
             <LeftAside></LeftAside>
           </aside>
           {/* main */}
-          <section className="main md:col-span-6 col-span-12 bg-amber-600">
+          <section className="main md:col-span-6 col-span-12">
             <Outlet></Outlet>
           </section>
           {/* right */}
-          <aside className="right-aside md:col-span-3 col-span-12 bg-red-500">
+          <aside className="right-aside md:col-span-3 col-span-12">
             <RightAside></RightAside>
           </aside>
         </div>

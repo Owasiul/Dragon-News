@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
       {
         path: "/caterogy/:id",
         Component: CaterogyNews,
+        loader: () => fetch('/news.json')
       },
       {
         path: "/about",
