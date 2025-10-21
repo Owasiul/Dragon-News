@@ -12,13 +12,14 @@ export const router = createBrowserRouter([
     errorElement: <Error404></Error404>,
     children: [
       {
-        path: "/",
+        path: "/:id",
         Component: HomePage,
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/caterogy/:id",
         Component: CaterogyNews,
-        loader: () => fetch('/news.json')
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/about",
