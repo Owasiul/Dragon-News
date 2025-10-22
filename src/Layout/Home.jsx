@@ -21,7 +21,7 @@ const Home = () => {
       <main className="w-[90%] mx-auto ">
         <div className="grid grid-cols-12 items-start justify-center gap-5">
           {/* left */}
-          <aside className="left-aside md:col-span-3 col-span-12 ">
+          <aside className="left-aside md:col-span-3 col-span-12 sticky h-fit top-0 ">
             <LeftAside></LeftAside>
           </aside>
           {/* main */}
@@ -29,7 +29,7 @@ const Home = () => {
             <Outlet></Outlet>
           </section>
           {/* right */}
-          <aside className="right-aside md:col-span-3 col-span-12">
+          <aside className="right-aside md:col-span-3 col-span-12 sticky h-fit top-0">
             <RightAside></RightAside>
           </aside>
         </div>

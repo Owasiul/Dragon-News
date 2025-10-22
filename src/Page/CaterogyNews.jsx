@@ -25,13 +25,12 @@ const CaterogyNews = () => {
 
   return (
     <div>
-      <h3 className="font-semibold">
-        <span>{caterogyNews.length} news found </span>
-      </h3>
+      <h2 className="font-bold">Dragon News Home</h2>
+
       <div className="my-5 grid grid-cols-1 gap-5 items-center">
-        {
-            caterogyNews.map(news => <NewsCard key={news.id} news={news}></NewsCard>)
-        }
+        {caterogyNews.map((news) => (
+          <NewsCard key={news.id} news={news}></NewsCard>
+        ))}
       </div>
     </div>
   );
