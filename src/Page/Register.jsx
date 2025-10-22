@@ -1,12 +1,20 @@
-import React from "react";
+import React, { use } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router";
+import AuthContext from "../Provider/AuthContext";
 
 const Register = () => {
+  const { createUser, setUser } = use(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+  
+    createUser(email, password).then((result) => {
+      const user = result.user;
+      setUser(user);
+      console.log(user)
+    });
   };
   return (
     <div className="bg-base-200 mx-auto min-h-screen">
