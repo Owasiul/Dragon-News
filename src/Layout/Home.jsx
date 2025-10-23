@@ -1,12 +1,14 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Header from "../Components/Header/Header";
 import LetestNews from "../Components/LetestNews/LetestNews";
 import Navbar from "../Components/Navbar/Navbar";
 import LeftAside from "../Components/LeftAside/LeftAside";
 import RightAside from "../Components/RightAside/RightAside";
+import LoadingPage from "../Page/LoadingPage";
 
 const Home = () => {
+  const { state } = useNavigate();
   return (
     <div>
       <header className="flex flex-col items-center my-4">
@@ -26,7 +28,11 @@ const Home = () => {
           </aside>
           {/* main */}
           <section className="main md:col-span-6 col-span-12">
-            <Outlet></Outlet>
+            {state == "Loading" ? (
+              <LoadingPage></LoadingPage>
+            ) : (
+              <Outlet></Outlet>
+            )}
           </section>
           {/* right */}
           <aside className="right-aside md:col-span-3 col-span-12 sticky h-fit top-0">

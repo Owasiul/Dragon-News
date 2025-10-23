@@ -1,19 +1,31 @@
 import React, { use } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import AuthContext from "../Provider/AuthContext";
 
 const Register = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, updateUser } = use(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-  
+    const name = event.target.name.value;
+    const photoUrl = event.target.photo.value;
+
     createUser(email, password).then((result) => {
       const user = result.user;
-      setUser(user);
-      console.log(user)
+      updateUser({ displayName: name, photoUrl: photoUrl })
+        .then(() =>
+          setUser(
+            { ...user, displayName: name, photoUrl: photoUrl },
+            navigate("/")
+          )
+        )
+        .catch((error) => {
+          console.log(error.code);
+          setUser(user);
+        });
     });
   };
   return (

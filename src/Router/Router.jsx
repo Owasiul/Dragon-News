@@ -9,6 +9,8 @@ import Login from "../Page/Login";
 import Register from "../Page/Register";
 import AuthLayout from "../Layout/AuthLayout";
 import NewsDetails from "../Page/NewsDetails";
+import PrivateContext from "../Provider/PrivateContext";
+import LoadingPage from "../Page/LoadingPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +26,7 @@ export const router = createBrowserRouter([
         path: "/caterogy/:id",
         Component: CaterogyNews,
         loader: () => fetch("/news.json"),
+        hydrateFallbackElement: <LoadingPage></LoadingPage>,
       },
       {
         path: "/about",
@@ -51,7 +54,13 @@ export const router = createBrowserRouter([
   },
   {
     path: "/news-details/:id",
-    element: <NewsDetails></NewsDetails>,
+    element: (
+      <PrivateContext>
+        {" "}
+        <NewsDetails></NewsDetails>
+      </PrivateContext>
+    ),
     loader: () => fetch("/news.json"),
+    hydrateFallbackElement: <LoadingPage></LoadingPage>,
   },
 ]);

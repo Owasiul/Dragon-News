@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
-import { Link } from "react-router";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../Provider/AuthContext";
 
 const Login = () => {
   const { logInUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogIn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -11,9 +14,13 @@ const Login = () => {
     logInUser(email, password)
       .then((userActive) => {
         alert("User Log in successful", userActive.user);
-        console.log(userActive.user);
+        // console.log(userActive.user);
+        navigate(`${location ? location.state : "/"}`);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error.code);
+        setError(error.code);
+      });
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-base-200">
@@ -51,7 +58,9 @@ const Login = () => {
                 required
               />
             </div>
-
+            {error && (
+              <p className="text-red-600 font-semibold">{error}</p>
+            )}
             {/* Login Button */}
             <div className="form-control mt-4">
               <button type="submit" className="btn btn-neutral w-full">
