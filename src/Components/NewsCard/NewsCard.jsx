@@ -8,9 +8,11 @@ import {
   Share2,
   MessageCircle,
 } from "lucide-react"; // Added Bookmark, Share2, MessageCircle
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
+    id,
     title,
     rating: { number: ratingNum, badge: ratingBadge },
     total_view: totalView,
@@ -119,9 +121,12 @@ const NewsCard = ({ news }) => {
 
         {/* Read More Button */}
         <div className="mb-4">
-          <button className="btn btn-link text-amber-500 no-underline hover:no-underline">
+          <Link
+            to={`/news-details/${id}`}
+            className="btn btn-link text-amber-500 no-underline hover:no-underline"
+          >
             Read More
-          </button>
+          </Link>
         </div>
 
         {/* Tags as Badges */}
